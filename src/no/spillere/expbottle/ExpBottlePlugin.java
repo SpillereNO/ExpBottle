@@ -28,24 +28,6 @@ public class ExpBottlePlugin extends JavaPlugin {
 		getConfig().options().copyDefaults();
 		saveDefaultConfig();
 		
-		expBottleConfig.setup();
-		
-
-		expBottleConfig.get().addDefault("noPermission", "You do not have the right permissions to excecute this command");
-		expBottleConfig.get().addDefault("cmdUsage", "%blue%Use %yellow&/xpbottle <XP> %blue%to take out experience");
-		expBottleConfig.get().addDefault("notEnoughExp", "You do not have the sufficient experience to take out");
-		expBottleConfig.get().addDefault("xpNotANumber", "XP must be a number");
-		expBottleConfig.get().addDefault("overMaxUnderMin", "You cant take out more than 100000 or less than 50 XP");
-		expBottleConfig.get().addDefault("successfulTakeOut", "You successfully withdrawed xp");
-		
-		expBottleConfig.get().addDefault("expBottleName", "ExpBottle");
-		expBottleConfig.get().addDefault("xpBottleLore1", "Creator: ");
-		expBottleConfig.get().addDefault("xpBottleLore2", "XP: ");
-		expBottleConfig.get().addDefault("minXp", 50);
-		expBottleConfig.get().addDefault("maxXp", 100000);
-		
-		expBottleConfig.get().options().copyDefaults(true);
-		expBottleConfig.save();
 	}
 
 	public void onDisable() {

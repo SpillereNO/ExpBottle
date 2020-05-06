@@ -7,9 +7,12 @@ import org.bukkit.entity.ThrownExpBottle;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ExpBottleEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 
 import no.spillere.expbottle.handlers.InfoKeeper;
+import no.spillere.expbottle.handlers.MainHandler;
 
 public class ExpBottleListener implements Listener {
 
@@ -20,10 +23,23 @@ public class ExpBottleListener implements Listener {
 		if(item.hasItemMeta()) {
 			if(item.getItemMeta().hasLore()) {
 				List<String> lore = item.getItemMeta().getLore();
-				if(lore.get(0).contains(InfoKeeper.xpBottleLore1) && lore.get(1).contains(InfoKeeper.xpBottleLore2)) {
-					String str = ChatColor.stripColor(lore.get(1));
+				if(lore.get(0) != null && item.getItemMeta().getDisplayName().equals(InfoKeeper.xpBottleName)) {
+					String str = ChatColor.stripColor(lore.get(MainHandler.getXpLoreLine(item)));
 					int xp = Integer.parseInt(str.replaceAll("\\D+",""));
 					event.setExperience(xp);
+				}
+			}
+		}
+	}
+	
+	@EventHandler
+	public void playerRenameItem(InventoryClickEvent event) {
+		if (event.getView().getType().equals(InventoryType.ANVIL)) {
+			if (event.getRawSlot() == 2) {
+				if (event.getInventory().getItem(0) != null) {
+					if (event.getInventory().getItem(0).getItemMeta().getDisplayName().equals(InfoKeeper.xpBottleName)) {
+						event.setCancelled(true);
+					}
 				}
 			}
 		}

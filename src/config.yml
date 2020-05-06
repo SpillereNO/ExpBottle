@@ -1,0 +1,26 @@
+# ExpBottle
+
+# Translatable messages
+
+# List of tags:
+# Universal tags (which can be used everywhere): %playername%, %playerdisplayname%, %minxp%, %maxxp%, %playerxp%
+# Conditional tags (which can only be used ): %missingxp%, %xp%
+
+# Messages which can be translated
+noPermission: 'You do not have the right permissions to execute this command'
+cmdUsage: 'Use /xpbottle <XP> to withdraw experience. You currently have %playerxp% xp.'
+notEnoughXp: 'You do not have the sufficient experience'
+xpNotANumber: 'XP must be a number'
+overMaxUnderMin: 'You cant withdraw more than %maxxp% XP or less than %minxp% XP'
+successfulWithdraw: 'You have successfully withdrawed %xp% XP'
+reloadSuccessful: 'You successfully reloaded the config'
+
+# XP Bottle informasjon
+xpBottleName: 'XP Bottle'
+xpBottleLore:
+- 'Creator: %playerdisplayname%'
+- 'XP: %xp%'
+
+# Minimum and maximum amount of XP you can withdraw
+minXp: 50
+maxXp: 100000
