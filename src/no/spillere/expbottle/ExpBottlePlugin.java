@@ -2,6 +2,7 @@ package no.spillere.expbottle;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
@@ -24,10 +25,10 @@ public class ExpBottlePlugin extends JavaPlugin {
 		instance = this;
 		loadListeners();
 		loadCommands();
-		
+
 		getConfig().options().copyDefaults();
 		saveDefaultConfig();
-		
+
 	}
 
 	public void onDisable() {
@@ -39,7 +40,14 @@ public class ExpBottlePlugin extends JavaPlugin {
 	}
 
 	private void loadCommands() {
-		registerCommand("xpbottle", new ExpBottleCommand(), "expbottle");
+
+
+		List<String> aliasList = ExpBottlePlugin.getPlugin(ExpBottlePlugin.class).getConfig().getStringList("aliases");
+		String[] aliases = new String[aliasList.size()];
+		aliasList.toArray(aliases);
+		
+		registerCommand("xpbottle", new ExpBottleCommand(), aliases);
+		
 	}
 
 	public void registerCommand(String name, CommandExecutor executor, String... aliases) {
