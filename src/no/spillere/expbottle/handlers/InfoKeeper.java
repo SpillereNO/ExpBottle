@@ -14,12 +14,17 @@ public class InfoKeeper {
 	
 	// Language
 	public static String noPermission = ChatColor.translateAlternateColorCodes('&', config.getString("noPermission"));
-	public static String cmdUsage = ChatColor.translateAlternateColorCodes('&', config.getString("cmdUsage"));
+	public static String cmdUsageUser = ChatColor.translateAlternateColorCodes('&', config.getString("cmdUsageUser"));
+	public static String cmdUsageAdmin = ChatColor.translateAlternateColorCodes('&', config.getString("cmdUsageAdmin"));
 	public static String notEnoughXp = ChatColor.translateAlternateColorCodes('&', config.getString("notEnoughXp"));
 	public static String xpNotANumber = ChatColor.translateAlternateColorCodes('&', config.getString("xpNotANumber"));
 	public static String overMaxUnderMin = ChatColor.translateAlternateColorCodes('&', config.getString("overMaxUnderMin"));
 	public static String successfulWithdraw = ChatColor.translateAlternateColorCodes('&', config.getString("successfulWithdraw"));
 	public static String reloadSuccessful = ChatColor.translateAlternateColorCodes('&', config.getString("reloadSuccessful"));
+	public static String xpBottleGive = ChatColor.translateAlternateColorCodes('&', config.getString("xpBottleGive"));
+	public static String xpBottleReceive = ChatColor.translateAlternateColorCodes('&', config.getString("xpBottleReceive"));
+	public static String playerNotOnline = ChatColor.translateAlternateColorCodes('&', config.getString("playerNotOnline"));
+	public static String giveYourselfXp = ChatColor.translateAlternateColorCodes('&', config.getString("giveYourselfXp"));
 	
 	// XpBottle
 	public static String xpBottleName = ChatColor.translateAlternateColorCodes('&', config.getString("xpBottleName"));
@@ -38,6 +43,21 @@ public class InfoKeeper {
 		string = string.replace("%maxxp%", Integer.toString(maxXp));
 		string = string.replace("%missingxp%", Integer.toString(exp-player.getTotalExperience()));
 		string = string.replace("%playerxp%", Integer.toString(player.getTotalExperience()));
+		
+		return string;
+	}
+	
+	public static String getReceiveInfoKeeper(Player giver, Player receiver, String string, int exp) {
+		
+		string = string.replace("%playername%", giver.getName());
+		string = string.replace("%playerdisplayname%", giver.getDisplayName());
+		string = string.replace("%receivername%", receiver.getName());
+		string = string.replace("%receiverdisplayname%", receiver.getDisplayName());
+		
+		string = string.replace("%xp%", Integer.toString(exp));
+		string = string.replace("%minxp%", Integer.toString(minXp));	
+		string = string.replace("%maxxp%", Integer.toString(maxXp));
+		string = string.replace("%playerxp%", Integer.toString(giver.getTotalExperience()));
 		
 		return string;
 	}

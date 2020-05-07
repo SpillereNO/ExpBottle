@@ -4,16 +4,21 @@
 
 # List of tags:
 # Universal tags (which can be used everywhere): %playername%, %playerdisplayname%, %minxp%, %maxxp%, %playerxp%
-# Conditional tags (which can only be used ): %missingxp%, %xp%
+# Conditional tags (which can only be used ): %missingxp%, %xp%, %receivername%, %receiverdisplayname%
 
 # Messages which can be translated
 noPermission: '&cYou do not have the right permissions to execute this command'
-cmdUsage: '&aUse &r/xpbottle <XP> &ato withdraw experience. You currently have &r%playerxp% &axp.'
+cmdUsageUser: '&aUse &r/xpbottle <XP> &ato withdraw experience. You currently have &r%playerxp% &aXP.'
+cmdUsageAdmin: '&aUse &r/xpbottle <XP/Give> [Player] [XP] &ato withdraw or give XP'
 notEnoughXp: '&cYou do not have the sufficient experience'
 xpNotANumber: '&cXP must be a number'
 overMaxUnderMin: '&cYou cant withdraw more than &r%maxxp% &cXP or less than &r%minxp% &cXP'
 successfulWithdraw: '&aYou have successfully withdrawed &r%xp% &aXP'
 reloadSuccessful: '&aYou successfully reloaded the config'
+xpBottleGive: '&aYou gave &r%receiverdisplayname% &aan XP Bottle with &r%xp% &aXP'
+xpBottleReceive: '%playerdisplayname% &agave you an XP Bottle with &r%xp% &aXP'
+giveYourselfXp: '&aYou gave yourself an XP Bottle with &r%xp% &aXP'
+playerNotOnline: '&cSpecified player is not online'
 
 # XP Bottle informasjon
 xpBottleName: '&aXP Bottle'
