@@ -33,6 +33,12 @@ public class InfoKeeper {
 	public static int minXp = config.getInt("minXp");
 	public static int maxXp = config.getInt("maxXp");
 	
+	// Aliases
+	public static List<String> commandAliases = config.getStringList("commandAliases");
+	public static List<String> giveAliases = config.getStringList("giveAliases");
+	public static List<String> reloadAliases = config.getStringList("reloadAliases");
+	public static List<String> allAliases = config.getStringList("allAliases");
+	
 	public static String getInfoKeeper(Player player, String string, int exp, int playerExp) {
 		
 		string = string.replace("%playername%", player.getName());

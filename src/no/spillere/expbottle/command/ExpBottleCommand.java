@@ -34,7 +34,21 @@ public class ExpBottleCommand implements CommandExecutor {
 					}else {
 						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.overMaxUnderMin, xp, player.getTotalExperience()));
 					}
-				}else if(args[0].equalsIgnoreCase("reload")) {
+				}else if(args[0].equalsIgnoreCase("all") || InfoKeeper.allAliases.contains(args[0])) {
+					int xp = player.getTotalExperience();
+					if(xp <= InfoKeeper.maxXp && xp >= InfoKeeper.minXp) {
+						if(xp <= player.getTotalExperience()) {
+							player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp,  player.getTotalExperience()));
+							MainHandler.givePlayerExpBottle(player, xp);
+							MainHandler.removePlayerExp(player, xp);
+						}else {
+							player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.notEnoughXp, xp, player.getTotalExperience()));
+						}
+					}else {
+						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.overMaxUnderMin, xp, player.getTotalExperience()));
+					}
+				}
+				else if(args[0].equalsIgnoreCase("reload") || InfoKeeper.reloadAliases.contains(args[0])) {
 					if(player.hasPermission("expbottle.reload")) {
 						ExpBottlePlugin.instance.reloadConfig();
 						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.reloadSuccessful, 0, player.getTotalExperience()));
@@ -45,7 +59,7 @@ public class ExpBottleCommand implements CommandExecutor {
 					player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.xpNotANumber, 0, player.getTotalExperience()));
 				}
 			}else if(args.length == 3 && player.hasPermission("expbottle.admin")) {
-				if(args[0].equalsIgnoreCase("give")) {
+				if(args[0].equalsIgnoreCase("give") || InfoKeeper.giveAliases.contains(args[0])) {
 					if(StringUtils.isNumeric(args[2])) {
 						int xp = Integer.parseInt(args[2]);
 						if(xp <= InfoKeeper.maxXp && xp >= InfoKeeper.minXp) {
