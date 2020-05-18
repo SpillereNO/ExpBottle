@@ -30,6 +30,9 @@ public class InfoKeeper {
 	public static String xpBottleName = ChatColor.translateAlternateColorCodes('&', config.getString("xpBottleName"));
 	public static List<String> xpBottleLore = config.getStringList("xpBottleLore");
 	
+	public static boolean tax = config.getBoolean("tax");
+	public static double taxAmount = config.getDouble("taxAmount");
+	
 	public static int minXp = config.getInt("minXp");
 	public static int maxXp = config.getInt("maxXp");
 	
@@ -50,6 +53,11 @@ public class InfoKeeper {
 		string = string.replace("%missingxp%", Integer.toString(exp-player.getTotalExperience()));
 		string = string.replace("%playerxp%", Integer.toString(player.getTotalExperience()));
 		
+		string = string.replace("%tax%", Integer.toString((int) (taxAmount*100)));
+		string = string.replace("%taxprice%", Integer.toString((int) (exp*(1+InfoKeeper.taxAmount))));
+		string = string.replace("%taxout%", Integer.toString((int) (exp/(1+InfoKeeper.taxAmount))));
+		string = string.replace("%maxout%", Integer.toString((int) (player.getTotalExperience()/(1+InfoKeeper.taxAmount))));
+		
 		return string;
 	}
 	
@@ -64,6 +72,11 @@ public class InfoKeeper {
 		string = string.replace("%minxp%", Integer.toString(minXp));	
 		string = string.replace("%maxxp%", Integer.toString(maxXp));
 		string = string.replace("%playerxp%", Integer.toString(giver.getTotalExperience()));
+		
+		string = string.replace("%tax%", Integer.toString((int) (taxAmount*100)));
+		string = string.replace("%taxprice%", Integer.toString((int) (exp/(1-InfoKeeper.taxAmount))));
+		string = string.replace("%taxout%", Integer.toString((int) (exp*(1-InfoKeeper.taxAmount))));
+		string = string.replace("%maxout%", Integer.toString((int) (giver.getTotalExperience()/(1+InfoKeeper.taxAmount))));
 		
 		return string;
 	}

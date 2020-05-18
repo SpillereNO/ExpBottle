@@ -42,7 +42,7 @@ public class ExpBottlePlugin extends JavaPlugin {
 	private void loadCommands() {
 
 
-		List<String> aliasList = ExpBottlePlugin.getPlugin(ExpBottlePlugin.class).getConfig().getStringList("aliases");
+		List<String> aliasList = ExpBottlePlugin.getPlugin(ExpBottlePlugin.class).getConfig().getStringList("commandAliases");
 		String[] aliases = new String[aliasList.size()];
 		aliasList.toArray(aliases);
 		

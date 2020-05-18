@@ -24,12 +24,26 @@ public class ExpBottleCommand implements CommandExecutor {
 				if(StringUtils.isNumeric(args[0])) {
 					int xp = Integer.parseInt(args[0]);
 					if(xp <= InfoKeeper.maxXp && xp >= InfoKeeper.minXp) {
-						if(xp <= player.getTotalExperience()) {
-							player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp,  player.getTotalExperience()));
-							MainHandler.givePlayerExpBottle(player, xp);
-							MainHandler.removePlayerExp(player, xp);
-						}else {
-							player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.notEnoughXp, xp, player.getTotalExperience()));
+						if(InfoKeeper.tax) {
+							double price = (xp*(1+InfoKeeper.taxAmount));
+							if(price <= player.getTotalExperience()) {
+								Bukkit.broadcastMessage("hei: " + price);
+								player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp,  player.getTotalExperience()));
+								MainHandler.givePlayerExpBottle(player, xp);
+								MainHandler.removePlayerExp(player, (int)price);
+							}
+							else {
+								player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.notEnoughXp, xp, player.getTotalExperience()));
+							}
+						}
+						else {
+							if(xp <= player.getTotalExperience()) {
+								player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp,  player.getTotalExperience()));
+								MainHandler.givePlayerExpBottle(player, xp);
+								MainHandler.removePlayerExp(player, xp);
+							}else {
+								player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.notEnoughXp, xp, player.getTotalExperience()));
+							}
 						}
 					}else {
 						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.overMaxUnderMin, xp, player.getTotalExperience()));
@@ -37,12 +51,15 @@ public class ExpBottleCommand implements CommandExecutor {
 				}else if(args[0].equalsIgnoreCase("all") || InfoKeeper.allAliases.contains(args[0])) {
 					int xp = player.getTotalExperience();
 					if(xp <= InfoKeeper.maxXp && xp >= InfoKeeper.minXp) {
-						if(xp <= player.getTotalExperience()) {
+						if(InfoKeeper.tax) {
+							player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  (int) (xp/(1+InfoKeeper.taxAmount)),  player.getTotalExperience()));
+							MainHandler.givePlayerExpBottle(player, (int) (xp/(1+InfoKeeper.taxAmount)));
+							MainHandler.removePlayerExp(player, xp);
+						}
+						else {
 							player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp,  player.getTotalExperience()));
 							MainHandler.givePlayerExpBottle(player, xp);
 							MainHandler.removePlayerExp(player, xp);
-						}else {
-							player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.notEnoughXp, xp, player.getTotalExperience()));
 						}
 					}else {
 						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.overMaxUnderMin, xp, player.getTotalExperience()));
