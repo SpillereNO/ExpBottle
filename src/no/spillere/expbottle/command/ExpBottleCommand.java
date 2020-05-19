@@ -27,7 +27,6 @@ public class ExpBottleCommand implements CommandExecutor {
 						if(InfoKeeper.tax) {
 							double price = (xp*(1+InfoKeeper.taxAmount));
 							if(price <= player.getTotalExperience()) {
-								Bukkit.broadcastMessage("hei: " + price);
 								player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp,  player.getTotalExperience()));
 								MainHandler.givePlayerExpBottle(player, xp);
 								MainHandler.removePlayerExp(player, (int)price);
