@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import no.spillere.expbottle.handlers.MainHandler;
+import no.spillere.expbottle.model.Experience;
 import no.spillere.expbottle.ExpBottlePlugin;
 import no.spillere.expbottle.handlers.InfoKeeper;
 
@@ -26,53 +27,53 @@ public class ExpBottleCommand implements CommandExecutor {
 					if(xp <= InfoKeeper.maxXp && xp >= InfoKeeper.minXp) {
 						if(InfoKeeper.tax) {
 							double price = (xp*(1+InfoKeeper.taxAmount));
-							if(price <= player.getTotalExperience()) {
-								player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp,  player.getTotalExperience()));
+							if(price <= Experience.getExp(player)) {
+								player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp, Experience.getExp(player)));
 								MainHandler.givePlayerExpBottle(player, xp);
 								MainHandler.removePlayerExp(player, (int)price);
 							}
 							else {
-								player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.notEnoughXp, xp, player.getTotalExperience()));
+								player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.notEnoughXp, xp, Experience.getExp(player)));
 							}
 						}
 						else {
-							if(xp <= player.getTotalExperience()) {
-								player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp,  player.getTotalExperience()));
+							if(xp <= Experience.getExp(player)) {
+								player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp, Experience.getExp(player)));
 								MainHandler.givePlayerExpBottle(player, xp);
 								MainHandler.removePlayerExp(player, xp);
 							}else {
-								player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.notEnoughXp, xp, player.getTotalExperience()));
+								player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.notEnoughXp, xp, Experience.getExp(player)));
 							}
 						}
 					}else {
-						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.overMaxUnderMin, xp, player.getTotalExperience()));
+						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.overMaxUnderMin, xp, Experience.getExp(player)));
 					}
 				}else if(args[0].equalsIgnoreCase("all") || InfoKeeper.allAliases.contains(args[0])) {
-					int xp = player.getTotalExperience();
+					int xp = Experience.getExp(player);
 					if(xp <= InfoKeeper.maxXp && xp >= InfoKeeper.minXp) {
 						if(InfoKeeper.tax) {
-							player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  (int) (xp/(1+InfoKeeper.taxAmount)),  player.getTotalExperience()));
+							player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  (int) (xp/(1+InfoKeeper.taxAmount)),  Experience.getExp(player)));
 							MainHandler.givePlayerExpBottle(player, (int) (xp/(1+InfoKeeper.taxAmount)));
 							MainHandler.removePlayerExp(player, xp);
 						}
 						else {
-							player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp,  player.getTotalExperience()));
+							player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp,  Experience.getExp(player)));
 							MainHandler.givePlayerExpBottle(player, xp);
 							MainHandler.removePlayerExp(player, xp);
 						}
 					}else {
-						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.overMaxUnderMin, xp, player.getTotalExperience()));
+						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.overMaxUnderMin, xp, Experience.getExp(player)));
 					}
 				}
 				else if(args[0].equalsIgnoreCase("reload") || InfoKeeper.reloadAliases.contains(args[0])) {
 					if(player.hasPermission("expbottle.reload")) {
 						ExpBottlePlugin.instance.reloadConfig();
-						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.reloadSuccessful, 0, player.getTotalExperience()));
+						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.reloadSuccessful, 0, Experience.getExp(player)));
 					}else {
-						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.noPermission, 0, player.getTotalExperience()));
+						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.noPermission, 0, Experience.getExp(player)));
 					}
 				}else {
-					player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.xpNotANumber, 0, player.getTotalExperience()));
+					player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.xpNotANumber, 0, Experience.getExp(player)));
 				}
 			}else if(args.length == 3 && player.hasPermission("expbottle.admin")) {
 				if(args[0].equalsIgnoreCase("give") || InfoKeeper.giveAliases.contains(args[0])) {
@@ -86,29 +87,29 @@ public class ExpBottleCommand implements CommandExecutor {
 									target.sendMessage(InfoKeeper.getReceiveInfoKeeper(player, target, InfoKeeper.xpBottleReceive, xp));
 									player.sendMessage(InfoKeeper.getReceiveInfoKeeper(player, target, InfoKeeper.xpBottleGive, xp));
 								}else {
-									player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.giveYourselfXp, xp, player.getTotalExperience()));
+									player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.giveYourselfXp, xp, Experience.getExp(player)));
 								}
 							}else {
-								player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.playerNotOnline, 0, player.getTotalExperience()));
+								player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.playerNotOnline, 0, Experience.getExp(player)));
 							}
 						}else {
-							player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.overMaxUnderMin, xp, player.getTotalExperience()));
+							player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.overMaxUnderMin, xp, Experience.getExp(player)));
 						}
 					}else {
-						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.xpNotANumber, 0, player.getTotalExperience()));
+						player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.xpNotANumber, 0, Experience.getExp(player)));
 					}
 				}else {
-					player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.cmdUsageAdmin, 0, player.getTotalExperience()));
+					player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.cmdUsageAdmin, 0, Experience.getExp(player)));
 				}
 			}else {
 				if(player.hasPermission("expbottle.admin")) {
-					player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.cmdUsageAdmin, 0, player.getTotalExperience()));
+					player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.cmdUsageAdmin, 0, Experience.getExp(player)));
 				}else {
-					player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.cmdUsageUser, 0, player.getTotalExperience()));
+					player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.cmdUsageUser, 0, Experience.getExp(player)));
 				}
 			}
 		}else {
-			player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.noPermission, 0, player.getTotalExperience()));
+			player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.noPermission, 0, Experience.getExp(player)));
 		}
 		return true;
 	}

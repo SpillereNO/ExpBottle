@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import net.md_5.bungee.api.ChatColor;
+import no.spillere.expbottle.model.Experience;
 
 public class MainHandler {
 
@@ -35,11 +36,11 @@ public class MainHandler {
 	public static void givePlayerExpBottle(Player player, int exp) {
 		ItemStack xpBottle = new ItemStack(Material.EXPERIENCE_BOTTLE, 1);
 		ItemMeta xpBottleMeta = xpBottle.getItemMeta();
-		xpBottleMeta.setDisplayName(InfoKeeper.getInfoKeeper(player, InfoKeeper.xpBottleName, exp, player.getTotalExperience()));
+		xpBottleMeta.setDisplayName(InfoKeeper.getInfoKeeper(player, InfoKeeper.xpBottleName, exp, Experience.getExp(player)));
 		List<String> lore = new ArrayList<>();
 		for(String string : InfoKeeper.xpBottleLore) {
 			string = ChatColor.translateAlternateColorCodes('&', string);
-			lore.add(InfoKeeper.getInfoKeeper(player, string, exp, player.getTotalExperience()));
+			lore.add(InfoKeeper.getInfoKeeper(player, string, exp, Experience.getExp(player)));
 		}
 		xpBottleMeta.setLore(lore);
 		xpBottle.setItemMeta(xpBottleMeta);
@@ -49,12 +50,7 @@ public class MainHandler {
 	}
 
 	public static void removePlayerExp(Player player, int exp) {
-		int hasExp = player.getTotalExperience();
-		player.setTotalExperience(0);
-		player.setLevel(0);
-		player.setExp(0);
-
-		player.giveExp(hasExp-exp);
+		Experience.changeExp(player, -exp); 
 	}
 	
 	public static int getXpLoreLine(ItemStack item) {

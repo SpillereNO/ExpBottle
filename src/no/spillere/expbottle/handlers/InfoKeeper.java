@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 
 import net.md_5.bungee.api.ChatColor;
 import no.spillere.expbottle.ExpBottlePlugin;
+import no.spillere.expbottle.model.Experience;
 
 public class InfoKeeper {
 	
@@ -50,13 +51,13 @@ public class InfoKeeper {
 		string = string.replace("%xp%", Integer.toString(exp));
 		string = string.replace("%minxp%", Integer.toString(minXp));	
 		string = string.replace("%maxxp%", Integer.toString(maxXp));
-		string = string.replace("%missingxp%", Integer.toString(exp-player.getTotalExperience()));
-		string = string.replace("%playerxp%", Integer.toString(player.getTotalExperience()));
+		string = string.replace("%missingxp%", Integer.toString(exp-Experience.getExp(player)));
+		string = string.replace("%playerxp%", Integer.toString(Experience.getExp(player)));
 		
 		string = string.replace("%tax%", Integer.toString((int) (taxAmount*100)));
 		string = string.replace("%taxprice%", Integer.toString((int) (exp*(1+InfoKeeper.taxAmount))));
 		string = string.replace("%taxout%", Integer.toString((int) (exp/(1+InfoKeeper.taxAmount))));
-		string = string.replace("%maxout%", Integer.toString((int) (player.getTotalExperience()/(1+InfoKeeper.taxAmount))));
+		string = string.replace("%maxout%", Integer.toString((int) (Experience.getExp(player)/(1+InfoKeeper.taxAmount))));
 		
 		return string;
 	}
@@ -71,12 +72,12 @@ public class InfoKeeper {
 		string = string.replace("%xp%", Integer.toString(exp));
 		string = string.replace("%minxp%", Integer.toString(minXp));	
 		string = string.replace("%maxxp%", Integer.toString(maxXp));
-		string = string.replace("%playerxp%", Integer.toString(giver.getTotalExperience()));
+		string = string.replace("%playerxp%", Integer.toString(Experience.getExp(giver)));
 		
 		string = string.replace("%tax%", Integer.toString((int) (taxAmount*100)));
 		string = string.replace("%taxprice%", Integer.toString((int) (exp/(1-InfoKeeper.taxAmount))));
 		string = string.replace("%taxout%", Integer.toString((int) (exp*(1-InfoKeeper.taxAmount))));
-		string = string.replace("%maxout%", Integer.toString((int) (giver.getTotalExperience()/(1+InfoKeeper.taxAmount))));
+		string = string.replace("%maxout%", Integer.toString((int) (Experience.getExp(giver)/(1+InfoKeeper.taxAmount))));
 		
 		return string;
 	}
