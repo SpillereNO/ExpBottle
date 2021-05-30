@@ -1,13 +1,6 @@
 ### ExpBottle
 
 ### Translatable messages
-
-# List of tags:
-# Universal tags (which can be used everywhere): %playername%, %playerdisplayname%, %minxp%, %maxxp%, %playerxp%
-# Conditional tags (which can only be used ): %missingxp%, %xp%, %receivername%, %receiverdisplayname%
-# If tax is true: %tax%, %xpprice%, %taxout%, %maxout%
-
-### Messages which can be translated
 noPermission: '&cYou do not have the right permissions to execute this command.'
 cmdUsageUser: '&aUse &r/xpbottle <XP/All> &ato withdraw experience. You currently have &r%playerxp% &aXP.'
 cmdUsageAdmin: '&aUse &r/xpbottle <XP/All/Give> [Player] [XP] &ato withdraw or give XP. You currently have &r%playerxp% &aXP. There is a &r%tax%% &atax on all withdraws.'
@@ -32,11 +25,17 @@ minXp: 50
 maxXp: 100000
 
 ### Tax on xp bottle
-tax: true
+tax: false
 # Tax amount. 0.3 = 30% tax
 taxAmount: 0.3
 
 ### Aliases
+
+## Simply add a new line with a new alias e.g:
+# exampleAliases:
+# - 'alias1'
+# - 'alias2'
+
 #Aliases to the actual xpbottle command
 commandAliases:
 - 'expbottle'
@@ -48,7 +47,6 @@ giveAliases:
 #Aliases to the "all" function
 allAliases:
 - 'everything'
-- '*'
 
 #Aliases to the "reload" function
 reloadAliases:
