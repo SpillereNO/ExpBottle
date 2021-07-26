@@ -1,15 +1,15 @@
-package no.spillere.expbottle.handlers;
+package me.brannstroom.expbottle.handlers;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import me.brannstroom.expbottle.model.Experience;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import net.md_5.bungee.api.ChatColor;
-import no.spillere.expbottle.model.Experience;
 
 public class MainHandler {
 

@@ -1,17 +1,17 @@
-package no.spillere.expbottle.handlers;
+package me.brannstroom.expbottle.handlers;
 
 import java.util.List;
 
+import me.brannstroom.expbottle.ExpBottle;
+import me.brannstroom.expbottle.model.Experience;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import net.md_5.bungee.api.ChatColor;
-import no.spillere.expbottle.ExpBottlePlugin;
-import no.spillere.expbottle.model.Experience;
 
 public class InfoKeeper {
 	
-	static FileConfiguration config = ExpBottlePlugin.getPlugin(ExpBottlePlugin.class).getConfig();
+	static FileConfiguration config = ExpBottle.getPlugin(ExpBottle.class).getConfig();
 	
 	// Language
 	public static String noPermission = ChatColor.translateAlternateColorCodes('&', config.getString("noPermission"));
@@ -51,7 +51,7 @@ public class InfoKeeper {
 		string = string.replace("%xp%", Integer.toString(exp));
 		string = string.replace("%minxp%", Integer.toString(minXp));	
 		string = string.replace("%maxxp%", Integer.toString(maxXp));
-		string = string.replace("%missingxp%", Integer.toString(exp-Experience.getExp(player)));
+		string = string.replace("%missingxp%", Integer.toString(exp- Experience.getExp(player)));
 		string = string.replace("%playerxp%", Integer.toString(Experience.getExp(player)));
 		
 		string = string.replace("%tax%", Integer.toString((int) (taxAmount*100)));

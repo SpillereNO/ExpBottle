@@ -1,4 +1,4 @@
-package no.spillere.expbottle.model;
+package me.brannstroom.expbottle.model;
 
 import org.bukkit.entity.Player;
 
