@@ -64,4 +64,13 @@ public class MainHandler {
 		
 		return line;
 	}
+
+	public static String getXpLoreString(int line) {
+
+		String str = "";
+
+		if(InfoKeeper.xpBottleLore.get(line) != null) str = InfoKeeper.xpBottleLore.get(line);
+
+		return str;
+	}
 }

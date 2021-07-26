@@ -18,27 +18,17 @@ public class ExpBottleListener implements Listener {
 
 	@EventHandler
 	public void onExpBottle(ExpBottleEvent event) {
-		Bukkit.broadcastMessage("Hei.");
 		ThrownExpBottle expBottle = event.getEntity();
 		ItemStack item = expBottle.getItem();
 		if(item.hasItemMeta()) {
-			Bukkit.broadcastMessage("Check 1");
 			if(item.getItemMeta().hasLore()) {
-				Bukkit.broadcastMessage("Check 2");
 				List<String> lore = item.getItemMeta().getLore();
-				Bukkit.broadcastMessage("Check 3");
-				Bukkit.broadcastMessage("AAA: " + lore.get(MainHandler.getXpLoreLine(item)).toLowerCase());
-				Bukkit.broadcastMessage("BBB: " + lore.get(0));
-				Bukkit.broadcastMessage("CCC: " + lore.get(1));
-				if(lore.get(MainHandler.getXpLoreLine(item)).toLowerCase().startsWith("xp:")) {
-					Bukkit.broadcastMessage("Check 4");
-					String str = ChatColor.stripColor(lore.get(MainHandler.getXpLoreLine(item)));
-					Bukkit.broadcastMessage("Check 5");
-					int xp = Integer.parseInt(str.replaceAll("\\D+",""));
-					Bukkit.broadcastMessage("eeeexp: " + xp);
-					Bukkit.broadcastMessage("Check 6");
+				String str = ChatColor.stripColor(lore.get(MainHandler.getXpLoreLine(item)));
+				str.replaceAll("[^a-zA-Z ]+?", "");
+				if(str.toLowerCase().contains("xp")) {
+					String str2 = ChatColor.stripColor(lore.get(MainHandler.getXpLoreLine(item)));
+					int xp = Integer.parseInt(str2.replaceAll("\\D+",""));
 					event.setExperience(xp);
-					Bukkit.broadcastMessage("Check 7");
 				}
 			}
 		}
