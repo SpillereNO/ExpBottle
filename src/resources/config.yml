@@ -15,6 +15,7 @@ giveYourselfXp: '&aYou gave yourself an XP Bottle with &r%xp% &aXP.'
 playerNotOnline: '&cSpecified player is not online.'
 
 ### XP Bottle informasjon
+# One of the lines in lore MUST use %xp%
 xpBottleName: '&aXP Bottle'
 xpBottleLore:
 - '&9Creator: &r%playerdisplayname%'
