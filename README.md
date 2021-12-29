@@ -8,5 +8,5 @@ Withdraw your XP into bottles!
 - Supports dispensers.
 - Supports custom aliases for all commands.
 
-## Support
+## Support & Suggestions
 Discord: Peter#8103
