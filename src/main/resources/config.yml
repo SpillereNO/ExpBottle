@@ -1,34 +1,34 @@
 ### ExpBottle
 
 ### Translatable messages
-noPermission: '&cYou do not have the right permissions to execute this command.'
-cmdUsageUser: '&aUse &r/xpbottle <XP/All> &ato withdraw experience. You currently have &r%playerxp% &aXP.'
-cmdUsageAdmin: '&aUse &r/xpbottle <XP/All/Give> [Player] [XP] &ato withdraw or give XP. You currently have &r%playerxp% &aXP. There is a &r%tax%% &atax on all withdraws.'
-notEnoughXp: '&cYou do not have the sufficient experience. You need %taxprice% to withdraw %xp%'
-xpNotANumber: '&cXP must be a number.'
-overMaxUnderMin: '&cYou cant withdraw more than &r%maxxp% &cXP or less than &r%minxp% &cXP.'
-successfulWithdraw: '&aYou successfully withdrew &r%xp% &aXP.'
-reloadSuccessful: '&aYou successfully reloaded the config.'
-xpBottleGive: '&aYou gave &r%receiverdisplayname% &aan XP Bottle with &r%xp% &aXP.'
-xpBottleReceive: '%playerdisplayname% &agave you an XP Bottle with &r%xp% &aXP.'
-giveYourselfXp: '&aYou gave yourself an XP Bottle with &r%xp% &aXP.'
-playerNotOnline: '&cSpecified player is not online.'
+No Permission: '&cYou do not have the right permissions to execute this command.'
+Command Usage User: '&aUse &r/expbottle <XP/All> &ato withdraw experience. You currently have &r%playerxp% &aXP.'
+Command Usage Admin: '&aUse &r/expbottle <XP/All/Give/Reload> [Player] [XP] &ato withdraw or give XP. You currently have &r%playerxp% &aXP. There is a &r%tax%% &atax on all withdraws.'
+Not Enough Experience: '&cYou do not have the sufficient experience. You need %taxprice% to withdraw %xp%'
+Invalid XP: '&cXP must be a number.'
+XP is more than max or less than min: '&cYou cant withdraw more than &r%maxxp% &cXP or less than &r%minxp% &cXP.'
+Successful Withdraw: '&aYou successfully withdrew &r%xp% &aXP.'
+Reload Successful: '&aYou successfully reloaded the config.'
+XP Bottle Give: '&aYou gave &r%receiverdisplayname% &aan XP Bottle with &r%xp% &aXP.'
+XP Bottle Receive: '%playerdisplayname% &agave you an XP Bottle with &r%xp% &aXP.'
+Give Yourself XP: '&aYou gave yourself an XP Bottle with &r%xp% &aXP.'
+Player Not Online: '&cSpecified player is not online.'
 
 ### XP Bottle informasjon
 # One of the lines in lore MUST use %xp%
-xpBottleName: '&aXP Bottle'
-xpBottleLore:
+XP Bottle Name: '&aXP Bottle'
+XP Bottle Lore:
 - '&9Creator: &r%playerdisplayname%'
 - '&9XP: &a%xp%'
 
 ### Minimum and maximum amount of XP you can withdraw
-minXp: 50
-maxXp: 100000
+Min XP: 50
+Max XP: 999999
 
 ### Tax on xp bottle
-tax: false
-# Tax amount. 0.3 = 30% tax
-taxAmount: 0.3
+Tax: false
+# Tax amount. 0.1 = 10% tax
+Tax Amount: 0.1
 
 ### Aliases
 
@@ -37,18 +37,20 @@ taxAmount: 0.3
 # - 'alias1'
 # - 'alias2'
 
-#Aliases to the actual xpbottle command
-commandAliases:
-- 'expbottle'
+#Aliases to the actual expbottle command
+#Reloading the config after updating commandAliases will show added aliases as red, but will still work.
+#Restarting or reloading the server will fix this.
+Command Aliases:
+- 'xpbottle'
 
-#Aliases to the "give" function
-giveAliases:
+#Aliases to the "give" function, which will give named player a specified amount of xp.
+Give Aliases:
 - 'i'
 
-#Aliases to the "all" function
-allAliases:
+#Aliases to the "all" function, which withdraws all your xp.
+All Aliases:
 - 'everything'
 
-#Aliases to the "reload" function
-reloadAliases:
+#Aliases to the "reload" function, which reloads this config
+Reload Aliases:
 - 'rel'

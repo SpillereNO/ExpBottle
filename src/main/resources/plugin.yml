@@ -1,5 +1,5 @@
 name: ExpBottle
 version: ${project.version}
 main: me.brannstroom.expbottle.ExpBottle
-api-version: 1.17
+api-version: 1.18
 authors: [ MiniGutt ]

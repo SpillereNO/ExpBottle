@@ -19,7 +19,7 @@ public class ExpBottleCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
-        if(player.hasPermission("expbottle.xpbottle") || player.isOp()) {
+        if(player.hasPermission("expbottle.user") || player.isOp()) {
             if(args.length == 1) {
                 if(StringUtils.isNumeric(args[0])) {
                     int xp = Integer.parseInt(args[0]);
@@ -65,8 +65,8 @@ public class ExpBottleCommand implements CommandExecutor {
                     }
                 }
                 else if(args[0].equalsIgnoreCase("reload") || InfoKeeper.reloadAliases.contains(args[0])) {
-                    if(player.hasPermission("expbottle.reload")) {
-                        ExpBottle.instance.reloadConfig();
+                    if(player.hasPermission("expbottle.admin")) {
+                        InfoKeeper.updateConfig();
                         player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.reloadSuccessful, 0, Experience.getExp(player)));
                     }else {
                         player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.noPermission, 0, Experience.getExp(player)));
@@ -112,6 +112,4 @@ public class ExpBottleCommand implements CommandExecutor {
         }
         return true;
     }
-
-
 }

@@ -27,7 +27,6 @@ public class ExpBottle extends JavaPlugin {
 
         getConfig().options().copyDefaults();
         saveDefaultConfig();
-
     }
 
     public void onDisable() {
@@ -40,28 +39,27 @@ public class ExpBottle extends JavaPlugin {
 
     private void loadCommands() {
 
-
         List<String> aliasList = ExpBottle.getPlugin(ExpBottle.class).getConfig().getStringList("commandAliases");
         String[] aliases = new String[aliasList.size()];
         aliasList.toArray(aliases);
 
-        registerCommand("xpbottle", new ExpBottleCommand(), aliases);
+        registerCommand("expbottle", new ExpBottleCommand(), aliases);
 
     }
 
-    public void registerCommand(String name, CommandExecutor executor, String... aliases) {
+    public static void registerCommand(String name, CommandExecutor executor, String... aliases) {
         try {
             Constructor<PluginCommand> constructor = PluginCommand.class.getDeclaredConstructor(String.class, Plugin.class);
             constructor.setAccessible(true);
 
-            PluginCommand command = constructor.newInstance(name, this);
+            PluginCommand command = constructor.newInstance(name, ExpBottle.instance);
 
             command.setExecutor(executor);
             command.setAliases(Lists.newArrayList(aliases));
             if (executor instanceof TabCompleter) {
                 command.setTabCompleter((TabCompleter) executor);
             }
-            this.getCommandMap().register("expbottle", command);
+            ExpBottle.instance.getCommandMap().register("expbottle", command);
         } catch (Exception e) {
             e.printStackTrace();
         }
