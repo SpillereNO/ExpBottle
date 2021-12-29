@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 import me.brannstroom.expbottle.command.ExpBottleCommand;
+import me.brannstroom.expbottle.handlers.InfoKeeper;
 import me.brannstroom.expbottle.listeners.ExpBottleListener;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
@@ -27,6 +28,8 @@ public class ExpBottle extends JavaPlugin {
 
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+
+        InfoKeeper.updateConfig();
     }
 
     public void onDisable() {
