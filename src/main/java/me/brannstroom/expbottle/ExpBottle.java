@@ -7,6 +7,7 @@ import java.util.List;
 import me.brannstroom.expbottle.command.ExpBottleCommand;
 import me.brannstroom.expbottle.handlers.InfoKeeper;
 import me.brannstroom.expbottle.listeners.ExpBottleListener;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandMap;
@@ -30,6 +31,9 @@ public class ExpBottle extends JavaPlugin {
         saveDefaultConfig();
 
         InfoKeeper.updateConfig();
+
+        int pluginId = 13813;
+        Metrics metrics = new Metrics(this, pluginId);
     }
 
     public void onDisable() {
