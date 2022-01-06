@@ -20,6 +20,12 @@ public class ExpBottleCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
         if(player.hasPermission("expbottle.user") || player.isOp()) {
+
+            if(!MainHandler.containsXpLine() && !args[0].equalsIgnoreCase("reload")) {
+                player.sendMessage(InfoKeeper.couldNotFindXpLine);
+                return true;
+            }
+
             if(args.length == 1) {
                 if(StringUtils.isNumeric(args[0])) {
                     int xp = Integer.parseInt(args[0]);

@@ -3,6 +3,7 @@ package me.brannstroom.expbottle;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.logging.Level;
 
 import me.brannstroom.expbottle.command.ExpBottleCommand;
 import me.brannstroom.expbottle.handlers.InfoKeeper;
@@ -30,7 +31,12 @@ public class ExpBottle extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
-        InfoKeeper.updateConfig();
+        try {
+            InfoKeeper.updateConfig();
+        }
+        catch(Exception e) {
+            getLogger().log(Level.INFO, "Could not update config. If this is your first launch of the plugin, do not worry.");
+        }
 
         int pluginId = 13813;
         Metrics metrics = new Metrics(this, pluginId);

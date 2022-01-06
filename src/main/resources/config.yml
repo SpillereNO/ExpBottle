@@ -13,6 +13,7 @@ XP Bottle Give: '&aYou gave &r%receiverdisplayname% &aan XP Bottle with &r%xp% &
 XP Bottle Receive: '%playerdisplayname% &agave you an XP Bottle with &r%xp% &aXP.'
 Give Yourself XP: '&aYou gave yourself an XP Bottle with &r%xp% &aXP.'
 Player Not Online: '&cSpecified player is not online.'
+Could Not Find Xp Line: '&cSomething has gone wrong, there is no line to show XP in the config. Contact an administrator.'
 
 ### XP Bottle informasjon
 # One of the lines in lore MUST use %xp%

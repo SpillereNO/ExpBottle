@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.brannstroom.expbottle.model.Experience;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -53,7 +54,7 @@ public class MainHandler {
 		Experience.changeExp(player, -exp); 
 	}
 	
-	public static int getXpLoreLine(ItemStack item) {
+	public static int getXpLoreLine() {
 		int line = 0;
 		
 		for(int i = 0; i < InfoKeeper.xpBottleLore.size(); i++) {
@@ -63,6 +64,14 @@ public class MainHandler {
 		}
 		
 		return line;
+	}
+
+	public static boolean containsXpLine() {
+		for(String str : InfoKeeper.xpBottleLore) {
+			Bukkit.broadcastMessage(str);
+			if(str.contains("%xp%")) return true;
+		}
+		return false;
 	}
 
 	public static String getXpLoreString(int line) {

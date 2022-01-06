@@ -32,6 +32,7 @@ public class InfoKeeper {
     public static String xpBottleReceive = ChatColor.translateAlternateColorCodes('&', config.getString("XP Bottle Receive"));
     public static String playerNotOnline = ChatColor.translateAlternateColorCodes('&', config.getString("Player Not Online"));
     public static String giveYourselfXp = ChatColor.translateAlternateColorCodes('&', config.getString("Give Yourself XP"));
+    public static String couldNotFindXpLine = ChatColor.translateAlternateColorCodes('&', config.getString("Could Not Find Xp Line"));
 
     // XpBottle
     public static String xpBottleName = ChatColor.translateAlternateColorCodes('&', config.getString("XP Bottle Name"));
@@ -104,6 +105,7 @@ public class InfoKeeper {
         xpBottleReceive = ChatColor.translateAlternateColorCodes('&', config.getString("XP Bottle Receive"));
         playerNotOnline = ChatColor.translateAlternateColorCodes('&', config.getString("Player Not Online"));
         giveYourselfXp = ChatColor.translateAlternateColorCodes('&', config.getString("Give Yourself XP"));
+        couldNotFindXpLine = ChatColor.translateAlternateColorCodes('&', config.getString("Could Not Find Xp Line"));
 
         // XpBottle
         xpBottleName = ChatColor.translateAlternateColorCodes('&', config.getString("XP Bottle Name"));
