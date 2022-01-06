@@ -68,7 +68,6 @@ public class MainHandler {
 
 	public static boolean containsXpLine() {
 		for(String str : InfoKeeper.xpBottleLore) {
-			Bukkit.broadcastMessage(str);
 			if(str.contains("%xp%")) return true;
 		}
 		return false;
