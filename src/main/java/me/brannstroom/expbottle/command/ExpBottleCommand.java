@@ -30,7 +30,7 @@ public class ExpBottleCommand implements CommandExecutor {
                 if(StringUtils.isNumeric(args[0])) {
                     int xp = Integer.parseInt(args[0]);
                     if(xp <= InfoKeeper.maxXp && xp >= InfoKeeper.minXp) {
-                        if(InfoKeeper.tax) {
+                        if(InfoKeeper.tax && !player.hasPermission("expbottle.bypasstax")) {
                             double price = (xp*(1+InfoKeeper.taxAmount));
                             if(price <= Experience.getExp(player)) {
                                 player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp, Experience.getExp(player)));
@@ -56,7 +56,7 @@ public class ExpBottleCommand implements CommandExecutor {
                 }else if(args[0].equalsIgnoreCase("all") || InfoKeeper.allAliases.contains(args[0])) {
                     int xp = Experience.getExp(player);
                     if(xp <= InfoKeeper.maxXp && xp >= InfoKeeper.minXp) {
-                        if(InfoKeeper.tax) {
+                        if(InfoKeeper.tax && !player.hasPermission("expbottle.bypasstax")) {
                             player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  (int) (xp/(1+InfoKeeper.taxAmount)),  Experience.getExp(player)));
                             MainHandler.givePlayerExpBottle(player, (int) (xp/(1+InfoKeeper.taxAmount)));
                             MainHandler.removePlayerExp(player, xp);
