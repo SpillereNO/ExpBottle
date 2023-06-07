@@ -45,7 +45,7 @@ public class ExpBottleCommand implements CommandExecutor {
                             if(xp <= Experience.getExp(player)) {
                                 player.sendMessage(InfoKeeper.getInfoKeeper(player,  InfoKeeper.successfulWithdraw,  xp, Experience.getExp(player)));
                                 MainHandler.givePlayerExpBottle(player, xp);
-                                MainHandler.removePlayerExp(player, xp);
+                                MainHandler.removePlayerExp(player, xp+1);
                             }else {
                                 player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.notEnoughXp, xp, Experience.getExp(player)));
                             }

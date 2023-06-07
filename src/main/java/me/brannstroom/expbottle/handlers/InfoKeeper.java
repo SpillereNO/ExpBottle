@@ -44,6 +44,8 @@ public class InfoKeeper {
     public static int minXp = config.getInt("Min XP");
     public static int maxXp = config.getInt("Max XP");
 
+    public static boolean throwable = config.getBoolean("Throwable");
+
     // Aliases
     public static List<String> commandAliases = config.getStringList("Command Aliases");
     public static List<String> giveAliases = config.getStringList("Give Aliases");
@@ -82,7 +84,8 @@ public class InfoKeeper {
         string = string.replace("%playerxp%", Integer.toString(Experience.getExp(giver)));
 
         string = string.replace("%tax%", Integer.toString((int) (taxAmount * 100)));
-        string = string.replace("%taxprice%", Integer.toString((int) (exp / (1 - InfoKeeper.taxAmount))));
+        if(tax) string = string.replace("%taxprice%", Integer.toString((int) (exp / (1 - InfoKeeper.taxAmount))));
+        else string = string.replace("%taxprice%", Integer.toString(exp));
         string = string.replace("%taxout%", Integer.toString((int) (exp * (1 - InfoKeeper.taxAmount))));
         string = string.replace("%maxout%", Integer.toString((int) (Experience.getExp(giver) / (1 + InfoKeeper.taxAmount))));
 
@@ -116,6 +119,8 @@ public class InfoKeeper {
 
         minXp = config.getInt("Min XP");
         maxXp = config.getInt("Max XP");
+
+        throwable = config.getBoolean("Throwable");
 
         // Aliases
         commandAliases = config.getStringList("Command Aliases");

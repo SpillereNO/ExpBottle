@@ -25,6 +25,14 @@ public class MainHandler {
 		return hasSpace;
 	}
 
+	public static boolean isExpBottle(ItemStack item) {
+		if(item.getType() != Material.EXPERIENCE_BOTTLE) return false;
+		if(!item.hasItemMeta()) return false;
+		if(!item.getItemMeta().hasLore()) return false;
+		if(!item.getItemMeta().getLore().get(getXpLoreLine()).matches(".*\\d+.*")) return false;
+		return true;
+	}
+
 	public static void givePlayerItemStack(Player player, ItemStack item) {
 		if(hasInventorySpace(player)) {
 			player.getInventory().addItem(item);
@@ -71,6 +79,19 @@ public class MainHandler {
 			if(str.contains("%xp%")) return true;
 		}
 		return false;
+	}
+
+	public static int getBottledExperience(ItemStack item) {
+		if (item.hasItemMeta()) {
+			if (item.getItemMeta().hasLore()) {
+				List<String> lore = item.getItemMeta().getLore();
+				String str = org.bukkit.ChatColor.stripColor(lore.get(MainHandler.getXpLoreLine()));
+
+				int xp = Integer.parseInt(str.replaceAll("\\D+", ""));
+				return xp;
+			}
+		}
+		return 0;
 	}
 
 	public static String getXpLoreString(int line) {

@@ -1,9 +1,12 @@
 ### ExpBottle
 
 ### Translatable messages
+
+# If tax is disabled (like it is by default), remember to remove all %tax% and %taxprice% from the messages.
+
 No Permission: '&cYou do not have the right permissions to execute this command.'
 Command Usage User: '&aUse &r/expbottle <XP/All> &ato withdraw experience. You currently have &r%playerxp% &aXP.'
-Command Usage Admin: '&aUse &r/expbottle <XP/All/Give/Reload> [Player] [XP] &ato withdraw or give XP. You currently have &r%playerxp% &aXP. There is a &r%tax%% &atax on all withdraws.'
+Command Usage Admin: '&aUse &r/expbottle <XP/All/Give/Reload> [Player] [XP] &ato withdraw or give XP. You currently have &r%playerxp% &aXP. There is a &r%tax%% &atax on all withdrawals.'
 Not Enough Experience: '&cYou do not have the sufficient experience. You need %taxprice% to withdraw %xp%'
 Invalid XP: '&cXP must be a number.'
 XP is more than max or less than min: '&cYou cant withdraw more than &r%maxxp% &cXP or less than &r%minxp% &cXP.'
@@ -22,14 +25,20 @@ XP Bottle Lore:
 - '&9Creator: &r%playerdisplayname%'
 - '&9XP: &a%xp%'
 
-### Minimum and maximum amount of XP you can withdraw
+### Throwable XP Bottle
+# If server uses any XP multiplier, it is recommended to set this to false.
+# This will consume the XP bottle and give the player the XP, and not throw the bottle.
+# Settings this to false will also disable throwing the bottle using dispensers.
+Throwable: true
+
+### Minimum and maximum amount of XP you can withdraw to a single bottle
 Min XP: 50
 Max XP: 999999
 
 ### Tax on xp bottle
 Tax: false
-# Tax amount. 0.1 = 10% tax
-Tax Amount: 0.1
+# Tax amount in decimal form, e.g 0.1 = 10%
+Tax Amount: 0.0
 
 ### Aliases
 
