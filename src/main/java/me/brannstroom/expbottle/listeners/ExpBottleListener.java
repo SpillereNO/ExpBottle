@@ -59,7 +59,12 @@ public class ExpBottleListener implements Listener {
         event.setCancelled(true);
 
         Player player = event.getPlayer();
-        player.getInventory().remove(item);
+
+        if(item.getAmount() > 1) {
+            item.setAmount(item.getAmount() - 1);
+        } else {
+            player.getInventory().remove(item);
+        }
 
         int bottledExperience = MainHandler.getBottledExperience(item);
         Experience.changeExp(player, bottledExperience-1);
