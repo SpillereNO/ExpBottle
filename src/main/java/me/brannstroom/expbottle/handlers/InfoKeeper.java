@@ -27,6 +27,7 @@ public class InfoKeeper {
     public static String xpNotANumber = ChatColor.translateAlternateColorCodes('&', config.getString("Invalid XP"));
     public static String overMaxUnderMin = ChatColor.translateAlternateColorCodes('&', config.getString("XP is more than max or less than min"));
     public static String successfulWithdraw = ChatColor.translateAlternateColorCodes('&', config.getString("Successful Withdraw"));
+    public static String successfulRedeem = ChatColor.translateAlternateColorCodes('&', config.getString("Successful Redeem"));
     public static String reloadSuccessful = ChatColor.translateAlternateColorCodes('&', config.getString("Reload Successful"));
     public static String xpBottleGive = ChatColor.translateAlternateColorCodes('&', config.getString("XP Bottle Give"));
     public static String xpBottleReceive = ChatColor.translateAlternateColorCodes('&', config.getString("XP Bottle Receive"));
@@ -103,6 +104,7 @@ public class InfoKeeper {
         xpNotANumber = ChatColor.translateAlternateColorCodes('&', config.getString("Invalid XP"));
         overMaxUnderMin = ChatColor.translateAlternateColorCodes('&', config.getString("XP is more than max or less than min"));
         successfulWithdraw = ChatColor.translateAlternateColorCodes('&', config.getString("Successful Withdraw"));
+        successfulRedeem = ChatColor.translateAlternateColorCodes('&', config.getString("Successful Redeem"));
         reloadSuccessful = ChatColor.translateAlternateColorCodes('&', config.getString("Reload Successful"));
         xpBottleGive = ChatColor.translateAlternateColorCodes('&', config.getString("XP Bottle Give"));
         xpBottleReceive = ChatColor.translateAlternateColorCodes('&', config.getString("XP Bottle Receive"));

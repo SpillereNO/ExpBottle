@@ -68,6 +68,7 @@ public class ExpBottleListener implements Listener {
 
         int bottledExperience = MainHandler.getBottledExperience(item);
         Experience.changeExp(player, bottledExperience-1);
+        player.sendMessage(InfoKeeper.getInfoKeeper(player, InfoKeeper.successfulRedeem, bottledExperience, Experience.getExp(player)));
     }
 
     // TODO: Disable xp bottle from dispenser

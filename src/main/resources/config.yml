@@ -11,6 +11,7 @@ Not Enough Experience: '&cYou do not have the sufficient experience. You need %t
 Invalid XP: '&cXP must be a number.'
 XP is more than max or less than min: '&cYou cant withdraw more than &r%maxxp% &cXP or less than &r%minxp% &cXP.'
 Successful Withdraw: '&aYou successfully withdrew &r%xp% &aXP.'
+Successful Redeem: '&aYou successfully redeemed &r%xp% &aXP.'
 Reload Successful: '&aYou successfully reloaded the config.'
 XP Bottle Give: '&aYou gave &r%receiverdisplayname% &aan XP Bottle with &r%xp% &aXP.'
 XP Bottle Receive: '%playerdisplayname% &agave you an XP Bottle with &r%xp% &aXP.'
