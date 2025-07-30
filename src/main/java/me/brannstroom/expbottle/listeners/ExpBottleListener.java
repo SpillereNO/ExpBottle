@@ -63,7 +63,13 @@ public class ExpBottleListener implements Listener {
         if(item.getAmount() > 1) {
             item.setAmount(item.getAmount() - 1);
         } else {
-            player.getInventory().remove(item);
+            if (player.getInventory().getItemInMainHand().equals(item)) {
+                player.getInventory().setItemInMainHand(null);
+            } else if (player.getInventory().getItemInOffHand().equals(item)) {
+                player.getInventory().setItemInOffHand(null);
+            } else {
+                player.getInventory().remove(item);
+            }
         }
 
         int bottledExperience = MainHandler.getBottledExperience(item);
